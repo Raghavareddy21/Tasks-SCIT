@@ -1,5 +1,6 @@
 import numpy as numpy
 import random 
+import csv
 from Poisson import List as L1
 from Random import List as L2
 import matplotlib.pyplot as plt
@@ -14,3 +15,9 @@ plot=plt.hist(List3,10,density=True)
 plt.grid(axis='x',alpha=1)
 plt.grid(axis='y',alpha=1)
 plt.show()
+with open('points.csv','w') as csvfile:
+	fieldnames=['points']
+	writer = csv.DictWriter(csvfile,fieldnames=fieldnames)
+	writer.writeheader()
+	for i in List3:
+		writer.writerow({'points': i})
